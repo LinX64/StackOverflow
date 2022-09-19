@@ -7,17 +7,18 @@ object BindingAdapter {
 
     @JvmStatic
     @androidx.databinding.BindingAdapter("setTags")
-    fun ChipGroup.setTags(mTags: List<String>) {
-        val m = mTags.joinToString(separator = ", ").split(",").map { it.trim() }
-        createChipTags(m)
+    fun ChipGroup.setTags(mList: List<String>) {
+        val mTags = mList.joinToString(separator = ", ").split(",").map { it.trim() }
+        createChipTags(mTags)
     }
 
-    private fun ChipGroup.createChipTags(m: List<String>) {
-        for (i in m.indices) {
-            val chip = Chip(context)
-            chip.text = m[i]
-            chip.isClickable = false
-            chip.isCheckable = false
+    private fun ChipGroup.createChipTags(mTags: List<String>) {
+        for (i in mTags.indices) {
+            val chip = Chip(context).apply {
+                text = mTags[i]
+                isClickable = false
+                isCheckable = false
+            }
             addView(chip)
         }
     }
