@@ -7,7 +7,7 @@ import com.example.stackoverflow.data.model.Item
 import com.example.stackoverflow.databinding.QuestionsListItemBinding
 
 class QuestionsAdapter : RecyclerView.Adapter<QuestionsAdapter.MyViewHolder>() {
-    private var books = ArrayList<Item>()
+    private var questions = ArrayList<Item>()
 
     inner class MyViewHolder(
         private val binding: QuestionsListItemBinding
@@ -24,14 +24,14 @@ class QuestionsAdapter : RecyclerView.Adapter<QuestionsAdapter.MyViewHolder>() {
         return MyViewHolder(itemBinding)
     }
 
-    override fun getItemCount(): Int = books.size
+    override fun getItemCount(): Int = questions.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(books[position])
-    }
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) =
+        holder.bind(questions[position])
+
 
     fun setData(list: List<Item>) {
-        books.clear()
-        books.addAll(list)
+        questions.clear()
+        questions.addAll(list)
     }
 }
