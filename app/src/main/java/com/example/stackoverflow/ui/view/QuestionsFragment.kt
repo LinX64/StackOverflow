@@ -55,6 +55,8 @@ class QuestionsFragment : Fragment(R.layout.fragment_questions) {
         }
     }
 
-    private fun setQuestions(questions: List<Item>) = questionsAdapter.setData(questions)
-
+    private fun setQuestions(questions: List<Item>) {
+        questionsAdapter.setData(questions)
+        questionsAdapter.notifyDataSetChanged()
+    }
 }
