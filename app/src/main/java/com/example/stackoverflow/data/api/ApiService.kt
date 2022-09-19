@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("questions?order=desc&sort=activity&site=stackoverflow")
+    @GET("questions?order=desc&sort=activity&tagged=android&site=stackoverflow")
     suspend fun getQuestions(): QuestionsResponse
 }

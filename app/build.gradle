@@ -32,15 +32,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    kapt {
+        correctErrorTypes true
+    }
     buildFeatures {
         dataBinding = true
     }
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def retrofit_version = "2.9.0"
-    def lifecycle_version = "2.4.0"
+    def lifecycle_version = "2.5.1"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

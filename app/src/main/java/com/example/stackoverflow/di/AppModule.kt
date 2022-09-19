@@ -15,32 +15,33 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+    private const val BASE_URL = "https://api.stackexchange.com/2.2/"
+
+    @Provides
+    fun provideBaseUrl() = BASE_URL
 
     @Provides
     @Singleton
-    fun provideBaseUrl() = "https://api.stackexchange.com/2.2/"
-
-    @Provides
-    @Singleton
-    fun provideHttpClient() = if (BuildConfig.DEBUG) {
-        val logging = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
-            .addInterceptor(logging)
+            .addInterceptor(loggingInterceptor)
             .build()
     } else OkHttpClient
         .Builder()
         .build()
 
-
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        baseUrl: String
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
+        .build()
 
     @Provides
     @Singleton
