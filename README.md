@@ -1,5 +1,4 @@
-# StackOverflow
-StackOverflow - Android 
+# StackOverflow - Android Questions
 
 ### Introduction
 
