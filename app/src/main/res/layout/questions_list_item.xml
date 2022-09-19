@@ -24,32 +24,47 @@
 
             <TextView
                 android:id="@+id/tvTitle"
-                style="@style/TextAppearance.AppCompat.Medium"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:lines="2"
                 android:text="@{question.title}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/scoreCardView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Is there any way to create a composable layout from modifier in jetpack compose?" />
 
             <TextView
                 android:id="@+id/txtTags"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Tags: "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/scoreCardView"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                tools:text="Tags: Android, Kotlin" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/tagsChip"
+                setTags="@{question.tags}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtTags"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                app:singleLine="true" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/scoreCardView"
@@ -64,15 +79,15 @@
                 app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="80dp"
-                    android:layout_height="50dp">
+                    android:layout_width="50dp"
+                    android:layout_height="30dp">
 
                     <TextView
                         android:id="@+id/txtScore"
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{question.score}"
+                        android:text='@{String.valueOf(question.score)}'
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
