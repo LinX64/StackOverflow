@@ -24,9 +24,7 @@ object BindingAdapter {
         for (i in mTags.indices) {
             val chip = Chip(context).apply {
                 text = mTags[i]
-                isClickable = false
-                isCheckable = false
-                chipMinHeight = 12f
+                chipMinHeight = 0f
             }
             addView(chip)
         }
