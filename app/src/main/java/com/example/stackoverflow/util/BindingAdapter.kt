@@ -1,9 +1,17 @@
 package com.example.stackoverflow.util
 
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 object BindingAdapter {
+
+    @JvmStatic
+    @androidx.databinding.BindingAdapter("setImage")
+    fun ImageView.setImage(image: String) {
+        Glide.with(context).load(image).into(this)
+    }
 
     @JvmStatic
     @androidx.databinding.BindingAdapter("setTags")
@@ -18,6 +26,7 @@ object BindingAdapter {
                 text = mTags[i]
                 isClickable = false
                 isCheckable = false
+                chipMinHeight = 12f
             }
             addView(chip)
         }
