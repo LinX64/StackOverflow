@@ -9,7 +9,7 @@ Regarding [Flow](https://developer.android.com/kotlin/flow), a flow is a type th
 
 ### Preview
 
-<img src="https://i.imgur.com/aLm0uGl.png" width="200" />
+<img src="https://i.imgur.com/58pQJTB.png" width="200" />
 
 ### Tech stacks & technologies
 
