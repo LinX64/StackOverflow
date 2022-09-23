@@ -24,7 +24,7 @@ class QuestionsAdapter : RecyclerView.Adapter<QuestionsAdapter.MyViewHolder>() {
         return MyViewHolder(itemBinding)
     }
 
-    override fun getItemCount(): Int = questions.size
+    override fun getItemCount() = questions.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) =
         holder.bind(questions[position])
