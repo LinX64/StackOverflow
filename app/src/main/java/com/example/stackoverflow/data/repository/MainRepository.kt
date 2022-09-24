@@ -11,7 +11,12 @@ class MainRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getQuestions() = flow {
         emit(NetworkResult.Loading(true))
 
-        val response = apiService.getQuestions()
+        val response = apiService.getQuestions(
+            "desc",
+            "activity",
+            "android",
+            "stackoverflow"
+        )
         emit(NetworkResult.Success(response.items))
     }.catch { e -> emit(NetworkResult.Error(e.message.toString())) }
 }
