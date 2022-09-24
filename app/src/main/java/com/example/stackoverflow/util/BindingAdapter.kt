@@ -10,23 +10,14 @@ object BindingAdapter {
     @JvmStatic
     @androidx.databinding.BindingAdapter("setImage")
     fun ImageView.setImage(image: String) {
-        Glide.with(context).load(image).into(this)
+        Glide.with(context)
+            .load(image)
+            .into(this)
     }
 
     @JvmStatic
     @androidx.databinding.BindingAdapter("setTags")
     fun ChipGroup.setTags(mList: List<String>) {
-        val mTags = mList.joinToString(separator = ", ").split(",").map { it.trim() }
-        createChipTags(mTags)
-    }
-
-    private fun ChipGroup.createChipTags(mTags: List<String>) {
-        for (i in mTags.indices) {
-            val chip = Chip(context).apply {
-                text = mTags[i]
-                chipMinHeight = 0f
-            }
-            addView(chip)
-        }
+        createChipTags(mList)
     }
 }
