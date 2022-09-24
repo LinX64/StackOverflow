@@ -29,9 +29,9 @@ class QuestionsAdapter : RecyclerView.Adapter<QuestionsAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) =
         holder.bind(questions[position])
 
-
     fun setData(list: List<Item>) {
         questions.clear()
         questions.addAll(list)
+        notifyDataSetChanged()
     }
 }
